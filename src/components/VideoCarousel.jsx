@@ -20,13 +20,7 @@ const VideoCarousel = () => {
     isPlaying: false,
   });
 
-  const [loadedData, setLoadedData] = useState([]);
-
   const { isEnd, startPlay, videoId, isLastVideo, isPlaying } = video;
-
-  const handleLoadedMetadata = (i, e) => {
-    setLoadedData((pre) => [...pre, e]);
-  };
 
   useGSAP(() => {
     gsap.to("#slider", {
@@ -36,7 +30,7 @@ const VideoCarousel = () => {
     });
 
     gsap.to("#video", {
-      scrollTrigger: {
+      scrollTriggser: {
         trigger: "#video",
         toggleActions: "restart none none none",
       },
@@ -51,15 +45,13 @@ const VideoCarousel = () => {
   }, [isEnd, videoId]);
 
   useEffect(() => {
-    if (loadedData.length > 1) {
-      if (!isPlaying) {
-        videoRef.current[videoId].pause();
-      } else {
-        console.log(123);
-        startPlay && videoRef.current[videoId].play();
-      }
+    if (!isPlaying) {
+      videoRef.current[videoId].pause();
+    } else {
+      console.log(123);
+      startPlay && videoRef.current[videoId].play();
     }
-  }, [startPlay, videoId, isPlaying, loadedData]);
+  }, [startPlay, videoId, isPlaying]);
 
   useEffect(() => {
     let currentProgress = 0;
@@ -173,9 +165,7 @@ const VideoCarousel = () => {
                   className={`${
                     slide.id === 2 && "translate-x-44"
                   } pointer-events-none`}
-                  onLoadedMetadata={(e) => {
-                    handleLoadedMetadata(e);
-                  }}
+                  onLoadedMetadata={(e) => {}}
                   ref={(el) => (videoRef.current[i] = el)}
                   onEnded={() => {
                     i !== 3

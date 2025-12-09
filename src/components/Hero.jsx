@@ -3,6 +3,7 @@ import gsap from "gsap";
 import React, { useEffect, useState } from "react";
 import { heroVideo, smallHeroVideo } from "@/utils";
 
+
 const Hero = () => {
   const [videoSrc, setVideoSrc] = useState(heroVideo);
 
@@ -13,7 +14,7 @@ const Hero = () => {
         : heroVideo;
 
     const handleResize = () => setVideoSrc(computeSrc());
-    handleResize(); // set once after mount
+    handleResize();
 
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
