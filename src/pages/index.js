@@ -1,17 +1,12 @@
 import Hero from "@/components/Hero";
 import Highlights from "@/components/Highlights";
 import Navbar from "@/components/Navbar";
-import dynamic from "next/dynamic";
 import Head from "next/head";
 
 import * as Sentry from "@sentry/react";
+import ClientWrapper from "@/components/ClientWrapper";
 
 function Home() {
-  const Model = dynamic(
-    () => import("@/components/Model").then((mod) => mod.default),
-    { ssr: false }
-  );
-
   return (
     <div>
       <Head>
@@ -23,7 +18,7 @@ function Home() {
         <Navbar />
         <Hero />
         <Highlights />
-        <Model />
+        <ClientWrapper />
       </main>
     </div>
   );
