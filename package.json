@@ -6,10 +6,13 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "sentry:sourcemaps": "sentry-cli sourcemaps inject --org rtg-kg --project javascript-react .next && sentry-cli sourcemaps upload --org rtg-kg --project javascript-react .next"
   },
   "dependencies": {
     "@gsap/react": "^2.1.2",
+    "@sentry/cli": "^2.58.2",
+    "@sentry/react": "^10.29.0",
     "gsap": "^3.13.0",
     "next": "16.0.7",
     "react": "19.2.0",

@@ -1,16 +1,8 @@
 "use client";
 
-import dynamic from "next/dynamic";
+import { Environment, Lightformer } from "@react-three/drei";
 
 const Lights = () => {
-  const Environment = dynamic(
-    () => import("@react-three/drei").then((m) => m.Environment),
-    { ssr: false }
-  );
-  const Lightformer = dynamic(
-    () => import("@react-three/drei").then((m) => m.Lightformer),
-    { ssr: false }
-  );
   return (
     // group different lights and lightformers. We can use group to organize lights, cameras, meshes, and other objects in the scene.
     <group name="lights">

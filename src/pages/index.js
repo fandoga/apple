@@ -4,7 +4,9 @@ import Navbar from "@/components/Navbar";
 import dynamic from "next/dynamic";
 import Head from "next/head";
 
-export default function Home() {
+import * as Sentry from "@sentry/react";
+
+function Home() {
   const Model = dynamic(
     () => import("@/components/Model").then((mod) => mod.default),
     { ssr: false }
@@ -26,3 +28,5 @@ export default function Home() {
     </div>
   );
 }
+
+export default Sentry.withProfiler(Home);
