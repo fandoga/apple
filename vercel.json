@@ -1,7 +1,0 @@
-{
-  "build": {
-    "env": {
-      "NEXT_DISABLE_TURBOPACK": "1"
-    }
-  }
-}
