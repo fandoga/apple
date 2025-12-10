@@ -1,10 +1,15 @@
 import Hero from "@/components/Hero";
 import Highlights from "@/components/Highlights";
-import Model from "@/components/Model";
 import Navbar from "@/components/Navbar";
+import dynamic from "next/dynamic";
 import Head from "next/head";
 
 export default function Home() {
+  const Model = dynamic(
+    () => import("@/components/Model").then((mod) => mod.default),
+    { ssr: false }
+  );
+
   return (
     <div>
       <Head>

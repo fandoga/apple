@@ -1,25 +1,17 @@
-"use client";
+"use clients";
 
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import ModelView from "./ModelView";
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { yellowImg } from "../utils";
 
 import * as THREE from "three";
+import { Canvas } from "@react-three/fiber";
+import { View } from "@react-three/drei";
 import { models, sizes } from "../constants";
-import dynamic from "next/dynamic";
 
 const Model = () => {
-  const Canvas = dynamic(
-    () => import("@react-three/fiber").then((m) => m.default),
-    { ssr: false }
-  );
-
-  const View = dynamic(() => import("@react-three/drei").then((m) => m.View), {
-    ssr: false,
-  });
-
   const [size, setSize] = useState("small");
   const [model, setModel] = useState({
     title: "iPhone 15 Pro in Natural Titanium",
@@ -27,22 +19,17 @@ const Model = () => {
     img: yellowImg,
   });
 
+  // camera control for the model view
   const cameraControlSmall = useRef();
   const cameraControlLarge = useRef();
 
+  // model
   const small = useRef(new THREE.Group());
   const large = useRef(new THREE.Group());
 
+  // rotation
   const [smallRotation, setSmallRotation] = useState(0);
   const [largeRotation, setLargeRotation] = useState(0);
-
-  const [root, setRoot] = useState();
-
-  useEffect(() => {
-    if (window.typeof !== "undefined") {
-      setRoot(document.body);
-    }
-  }, []);
 
   useGSAP(() => {
     gsap.to("#heading", { y: 0, opacity: 1 });
@@ -76,6 +63,7 @@ const Model = () => {
               item={model}
               size={size}
             />
+
             <Canvas
               className="w-full h-full"
               style={{
@@ -86,7 +74,7 @@ const Model = () => {
                 right: 0,
                 overflow: "hidden",
               }}
-              eventSource={root}
+              eventSource={document.body}
             >
               <View.Port />
             </Canvas>
@@ -111,7 +99,7 @@ const Model = () => {
                 {sizes.map(({ label, value }) => (
                   <span
                     key={label}
-                    className="size-btn cursor-pointer"
+                    className="size-btn"
                     style={{
                       backgroundColor: size === value ? "white" : "transparent",
                       color: size === value ? "black" : "white",
