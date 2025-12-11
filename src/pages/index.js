@@ -5,6 +5,9 @@ import Head from "next/head";
 
 import * as Sentry from "@sentry/react";
 import ClientWrapper from "@/components/ClientWrapper";
+import Features from "@/components/Features";
+import HowItWorks from "@/components/HowItWorks";
+import Footer from "@/components/Footer";
 
 function Home() {
   return (
@@ -19,6 +22,9 @@ function Home() {
         <Hero />
         <Highlights />
         <ClientWrapper />
+        <Features />
+        <HowItWorks />
+        <Footer />
       </main>
     </div>
   );

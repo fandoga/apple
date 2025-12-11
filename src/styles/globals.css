@@ -80,11 +80,11 @@ canvas {
   }
 
   .feature-text {
-    @apply text-gray max-w-md text-lg md:text-xl font-semibold opacity-0 translate-y-[100px];
+    @apply text-gray max-w-md text-lg md:text-xl font-semibold opacity-0 translate-y-[100px] mb-6;
   }
 
   .feature-text-container {
-    @apply w-full justify-center flex-col md:flex-row mt-10 md:mt-16 gap-5;
+    @apply w-full flex justify-center flex-col md:flex-row  mt-10 md:mt-16 gap-5;
   }
 
   .feature-video {
@@ -132,7 +132,7 @@ canvas {
   }
 
   .video-carousel_container {
-    @apply relative sm:w-[60vw]  w-[88vw] md:h-[70vh] sm:h-[50vh] h-[35vh];
+    @apply relative sm:w-[68vw]  w-[88vw] md:h-[70vh] sm:h-[50vh] h-[35vh];
   }
 
   .g_fadeIn {

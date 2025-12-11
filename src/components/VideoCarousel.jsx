@@ -1,5 +1,6 @@
 import { hightlightsSlides } from "@/constants";
 import { pauseImg, playImg, replayImg } from "@/utils";
+import { animateWithGsap } from "@/utils/animations";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/all";
@@ -23,12 +24,23 @@ const VideoCarousel = () => {
   const { isEnd, startPlay, videoId, isLastVideo, isPlaying } = video;
 
   useGSAP(() => {
+    animateWithGsap(
+      "#sliderButtons",
+      {
+        scale: 1,
+        opacity: 1,
+        y: 0,
+        ease: "back.inOut",
+      },
+      {
+        toggleActions: "play none none none",
+      }
+    );
     gsap.to("#slider", {
       transform: `translateX(${-100 * videoId}%)`,
       duration: 2,
       ease: "power2.inOut",
     });
-
     gsap.to("#video", {
       scrollTrigger: {
         trigger: "#video",
@@ -195,7 +207,10 @@ const VideoCarousel = () => {
         ))}
       </div>
 
-      <div className="relative mt-10 flex-center">
+      <div
+        id="sliderButtons"
+        className="translate-y-[100px] scale-[0.5] opacity-0 relative mt-10 flex-center"
+      >
         <div className="py-5 px-7 flex-center bg-gray-300 backdrop-blur rounded-full">
           {hightlightsSlides.map((_, i) => (
             <span

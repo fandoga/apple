@@ -30,4 +30,5 @@ export const blackImg = "/assets/images/black.jpg";
 export const explore1Img = "/assets/images/explore1.jpg";
 export const explore2Img = "/assets/images/explore2.jpg";
 export const chipImg = "/assets/images/chip.jpeg";
+export const blurPhone = "/assets/images/result.jpg";
 export const frameImg = "/assets/images/frame.png";
