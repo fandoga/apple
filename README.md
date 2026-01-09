@@ -39,7 +39,7 @@
 
 ### 1. Клонировать репозиторий  
 ```bash
-git clone https://github.com/USERNAME/apple.git
+git clone https://github.com/fandoga/apple.git
 cd apple
 npm install
 npm run dev
